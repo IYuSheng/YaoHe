@@ -21,6 +21,11 @@
 #define RT_DEBUG
 #define RT_DEBUG_COLOR
 
+#define RT_USING_PIN
+#define RT_USING_PWM
+#define RT_USING_PWM_CMD
+#define BSP_USING_PWM2
+#define BSP_USING_TIM2
 /* Inter-Thread communication */
 
 #define RT_USING_SEMAPHORE
@@ -88,9 +93,12 @@
 #define RT_USING_DEVICE_IPC
 #define RT_PIPE_BUFSZ 512
 #define RT_USING_SERIAL
+#define RT_SERIAL_USING_DMA
 #define RT_SERIAL_RB_BUFSZ 64
+#define RT_USING_HWTIMER
 #define RT_USING_PIN
-
+#define RT_USING_PWM
+#define BSP_USING_HWTIMER
 /* Using USB */
 
 /* end of Using USB */

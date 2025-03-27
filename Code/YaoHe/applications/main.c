@@ -1,31 +1,34 @@
 #include <rtthread.h>
-#include <rtthread.h>
 #include <rtdevice.h>
 #include <drv_common.h>
+#include "led_driver.h"
+#include "Uart3_8266.h"
+#include "Beep.h"
+#include <board.h>
 
 #define DBG_TAG "main"
 #define DBG_LVL DBG_LOG
 #include <rtdbg.h>
 
-#define LED_PIN     GET_PIN(C, 0)  // 根据 BSP 定义引脚
+/* 定义 LED 设备实例 */
+static struct rt_led_device led1;
+
 
 
 int main(void)
 {
-    /* 初始化 LED 引脚为推挽输出 */
-        rt_pin_mode(LED_PIN, PIN_MODE_OUTPUT);
+        /* 启动 PWM 蜂鸣器线程 */
+        if (pwm_beep_start() != RT_EOK)
+        {
+            LOG_E("Failed to start PWM beep thread");
+        }
 
-    int count = 1;
+        /* 初始化LED并启动控制线程 */
+        if (rt_led_init_with_thread(&led1, GET_PIN(A, 4), PIN_HIGH, 512, 20, 10) != RT_EOK) {
+            return -RT_ERROR;
+        }
 
-    while (count++)
-    {
-        rt_pin_write(LED_PIN, PIN_HIGH);  // 点亮
-        rt_thread_mdelay(500);
-        rt_pin_write(LED_PIN, PIN_LOW);   // 熄灭
-        rt_thread_mdelay(500);
-        LOG_D("Hello RT-Thread!");
-        rt_thread_mdelay(1000);
-    }
+       CreatUart3TestEntry();//esp8266收发接收线程函数
 
-    return RT_EOK;
+       return RT_EOK;
 }

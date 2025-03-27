@@ -13,3 +13,18 @@ for d in list:
         objs = objs + SConscript(os.path.join(d, 'SConscript'))
 
 Return('objs')
+
+Import('RTT_ROOT')
+from building import *
+
+cwd = GetCurrentDir()
+
+# 添加 drivers 目录
+objs = [Glob('drivers/*.c')]
+
+# 添加头文件路径
+CPPPATH = [cwd + '/drivers']
+
+group = DefineGroup('Drivers', objs, depend = [''], CPPPATH = CPPPATH)
+
+Return('group')
