@@ -43,7 +43,7 @@ static void serial_thread_entry(void *parameter)
         //从串口读取数据
         rt_size_t len = rt_device_read(msg.dev, 0, rx_buffer, sizeof(rx_buffer)-1);
         rx_buffer[len] = '\0'; // 添加字符串终止符
-
+        rt_kprintf("%s\r\n", rx_buffer);
         //解析数据，保留有效数据
         char *payload = strchr(rx_buffer, ':');
         if (payload)

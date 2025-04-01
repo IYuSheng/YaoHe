@@ -126,7 +126,9 @@ extern "C"
  *                 such as     #define HAL_SPI_MODULE_ENABLED
  */
 
-/*#define BSP_USING_SPI1*/
+#define BSP_USING_SPI1
+//#define BSP_SPI1_SCK_PIN   GET_PIN(A, 5)
+//#define BSP_SPI1_MOSI_PIN  GET_PIN(A, 7)
 /*#define BSP_USING_SPI2*/
 /*#define BSP_USING_SPI3*/
 

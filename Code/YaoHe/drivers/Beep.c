@@ -4,7 +4,7 @@
 #define PWM_DEV_CHAN 2
 
 static struct rt_device_pwm *pwm_dev;
-
+#define BEEP    GET_PIN(A, 1)
 // 蜂鸣器参数
 static rt_uint32_t beep_freq = 2700;  // 默认 1kHz
 static rt_uint32_t beep_duty = 50;    // 默认 50% 占空比
@@ -43,13 +43,16 @@ static void pwm_thread_entry(void *parameter)
 
     while (1)
     {
+        rt_pin_write(BEEP,PIN_LOW);
+        rt_thread_mdelay(1000);
         // 响 1ms
-        rt_pwm_set(pwm_dev, PWM_DEV_CHAN, period, pulse);
-        rt_thread_mdelay(1);
+//        rt_pwm_set(pwm_dev, PWM_DEV_CHAN, period, pulse);
+//        rt_thread_mdelay(1);
+//
+//        // 静音 1ms
+//        rt_pwm_set(pwm_dev, PWM_DEV_CHAN, period, 0);
+//        rt_thread_mdelay(1);
 
-        // 静音 1ms
-        rt_pwm_set(pwm_dev, PWM_DEV_CHAN, period, 0);
-        rt_thread_mdelay(1);
     }
 }
 

@@ -64,19 +64,6 @@
 
 /* Command shell */
 
-#define RT_USING_FINSH
-#define FINSH_THREAD_NAME "tshell"
-#define FINSH_USING_HISTORY
-#define FINSH_HISTORY_LINES 5
-#define FINSH_USING_SYMTAB
-#define FINSH_USING_DESCRIPTION
-#define FINSH_THREAD_PRIORITY 20
-#define FINSH_THREAD_STACK_SIZE 4096
-#define FINSH_CMD_SIZE 80
-#define FINSH_USING_MSH
-#define FINSH_USING_MSH_DEFAULT
-#define FINSH_USING_MSH_ONLY
-#define FINSH_ARG_MAX 10
 /* end of Command shell */
 
 /* Device virtual file system */
@@ -95,6 +82,7 @@
 #define RT_USING_I2C_BITOPS
 #define RT_USING_PIN
 #define RT_USING_PWM
+#define RT_USING_SPI
 
 /* Using USB */
 
@@ -103,7 +91,7 @@
 
 /* POSIX layer and C standard library */
 
-#define RT_USING_LIBC
+#define RT_LIBC_USING_TIME
 /* end of POSIX layer and C standard library */
 
 /* Network */

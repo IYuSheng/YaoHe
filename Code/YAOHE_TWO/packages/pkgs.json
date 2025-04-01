@@ -1,0 +1,12 @@
+[
+ {
+  "path": "/packages/multimedia/LVGL/LVGL", 
+  "ver": "v8.3.11", 
+  "name": "LVGL"
+ }, 
+ {
+  "path": "/packages/peripherals/ili9341", 
+  "ver": "latest", 
+  "name": "ILI9341"
+ }
+]

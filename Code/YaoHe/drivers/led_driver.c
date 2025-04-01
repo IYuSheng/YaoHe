@@ -6,8 +6,8 @@ static void led_thread_entry(void *parameter)
 {
     struct rt_led_device *led = (struct rt_led_device *)parameter;
     while (1) {
-        rt_led_toggle(led);
-        rt_thread_mdelay(500);
+        rt_thread_mdelay(1000);
+        rt_led_off(led);
     }
 }
 
@@ -57,14 +57,14 @@ int rt_led_init(struct rt_led_device *led, rt_base_t pin, rt_uint8_t active_leve
     return RT_EOK;
 }
 
-/* 点亮 LED */
-void rt_led_on(struct rt_led_device *led)
+/* 关闭 LED */
+void rt_led_off(struct rt_led_device *led)
 {
     rt_pin_write(led->pin, led->active);
 }
 
-/* 关闭 LED */
-void rt_led_off(struct rt_led_device *led)
+/* 点亮 LED */
+void rt_led_on(struct rt_led_device *led)
 {
     rt_pin_write(led->pin, !led->active);
 }
