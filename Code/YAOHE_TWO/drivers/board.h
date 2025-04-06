@@ -41,7 +41,7 @@ extern "C"
 
 /*-------------------------- CLOCK CONFIG BEGIN --------------------------*/
 
-#define BSP_CLOCK_SOURCE                  ("HSI")
+#define BSP_CLOCK_SOURCE                  ("HSE")
 #define BSP_CLOCK_SOURCE_FREQ_MHZ         ((int32_t)0)
 #define BSP_CLOCK_SYSTEM_FREQ_MHZ         ((int32_t)80)
 
@@ -70,6 +70,12 @@ extern "C"
 #define BSP_UART1_TX_PIN       "PA9"
 #define BSP_UART1_RX_PIN       "PA10"
 
+#define BSP_USING_UART3
+#define BSP_UART3_TX_PIN       "PC10"
+#define BSP_UART3_RX_PIN       "PC11"
+//#define BSP_UART3_RX_USING_DMA
+
+
 /*-------------------------- UART CONFIG END --------------------------*/
 
 /*-------------------------- I2C CONFIG BEGIN --------------------------*/
@@ -92,10 +98,14 @@ extern "C"
 #define BSP_I2C1_SDA_PIN    GET_PIN(port, pin)
 #endif
 
+#define BSP_USING_I2C2
+#define BSP_I2C2_SCL_PIN    GET_PIN(B, 10)
+#define BSP_I2C2_SDA_PIN    GET_PIN(B, 11)
+
 /*#define BSP_USING_I2C2*/
 #ifdef BSP_USING_I2C2
-#define BSP_I2C2_SCL_PIN    GET_PIN(port, pin)
-#define BSP_I2C2_SDA_PIN    GET_PIN(port, pin)
+#define BSP_I2C2_SCL_PIN    GET_PIN(B, 10)
+#define BSP_I2C2_SDA_PIN    GET_PIN(B, 11)
 #endif
 
 /*-------------------------- I2C CONFIG END --------------------------*/
@@ -160,7 +170,8 @@ extern "C"
  *                 such as     #define HAL_TIM_MODULE_ENABLED
  *
  */
-
+#define BSP_USING_PWM2
+#define BSP_USING_PWM2_CH2
 /*#define BSP_USING_PWM1*/
 /*#define BSP_USING_PWM2*/
 /*#define BSP_USING_PWM3*/
